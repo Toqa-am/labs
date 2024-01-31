@@ -1,0 +1,62 @@
+1-
+sudo nano /etc/httpd/conf.modules.d/00-mpm.conf
+uncomment line:
+LoadModule mpm_worker_module modules/mod_mpm_worker.so
+comment 
+#LoadModule mpm_event_module modules/mod_mpm_event.so
+
+[toqa@toqa ~]$ systemctl restart httpd
+
+2-
+sudo nano /etc/httpd/conf.modules.d/00-base.conf
+
+it's already enabled
+LoadModule rewrite_module modules/mod_rewrite.so
+
+3-
+a-
+sudo nano /etc/httpd/conf/httpd.conf
+
+RewriteEngine On
+RewriteCond "%{QUERY_STRING}" "forbidden" [NC]
+RewriteRule "." "-" [F]
+
+b-
+  
+  RewriteCond "%{QUERY_STRING}" ".+"
+RewriteRule "^\?.*" "/nothing"  [R]
+
+  
+  
+c-
+
+sudo nano /etc/httpd/conf/httpd.conf
+
+RewriteCond "%{QUERY_STRING}" "val=val" [NC]
+RewriteRule "/page1" "/page2" [R]
+
+systemctl restart httpd
+
+d-
+
+e-
+RewriteRule "/one/two" "/something.cgi?arg=$1&other=$2" [R]
+or
+RewriteRule "^localhost/(.+)/(.+)" "/something.cgi?arg=$1&other=$2" [R]
+
+
+
+4-
+in configuration file :
+
+<VirtualHost *:80>
+    ServerAdmin "user@os.iti.gov.eg"
+    ServerName "os.iti.gov.eg"
+    DocumentRoot "/var/www/website"
+    ServerAlias "os.iti.gov.eg"
+</VirtualHost>
+
+in /etc/hosts add:
+127.0.0.1   os.iti.gov.eg
+
+then restart the service
