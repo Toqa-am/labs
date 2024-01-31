@@ -1,0 +1,34 @@
+1 Done
+
+2-
+in httpd.conf
+Redirect "/page1.html" "http://localhost/page2.html"
+
+restart
+
+3-
+in .htaccess file in directory
+<Directory>
+	AuthType Basic
+	AuthName "Enter name and password"
+	AuthUserFile "/var/www/.htpasswd"
+	require valid-user
+</Directory>
+
+sudo htpasswd -c .htpasswd toqa
+
+restart
+
+4-
+in .htaccess file in directory
+<FilesMatch "*\.pdf$">
+	AuthType Basic
+	AuthName "Enter name and password"
+	AuthUserFile "/var/www/.htpasswd"
+	require valid-user
+</Directory>
+
+sudo htpasswd -c .htpasswd toqa
+
+restart
+
