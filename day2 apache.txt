@@ -37,8 +37,6 @@ RewriteRule "/page1" "/page2" [R]
 
 systemctl restart httpd
 
-d-
-
 e-
 RewriteRule "/one/two" "/something.cgi?arg=$1&other=$2" [R]
 or
