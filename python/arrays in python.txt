@@ -1,0 +1,8 @@
+Name:Toqa Abdel-sattar Mohammed
+OS Assiut
+
+Arrays in python:
+
+Python does not have built-in support for Arrays, but we can use lists to implement it with a fixed size or use numpy library array method.
+
+lists are better because we don't have to determine its size to be fixed, its elements don't have to be of one type (homogeneous) and they are faster than traditional arrays in numeric types
