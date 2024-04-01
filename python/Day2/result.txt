@@ -1,0 +1,4 @@
+Shape: Triangle 
+1/2 Base: 2
+Hight: 4
+Area: 4.0
